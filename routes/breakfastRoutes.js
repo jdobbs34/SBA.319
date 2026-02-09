@@ -1,5 +1,6 @@
 import express from "express";
-import Recipes from "../models/recipeSchema.js";
+import Recipe from "../models/recipeSchema.js";
+
 
 const router = express.Router();
 
@@ -7,13 +8,13 @@ const router = express.Router();
 router
   .route("/")
   .post(async (req, res) => {
-    let newRecipe = await Recipes.insertOne(req.body);
+    let newRecipe = await Recipe.insertOne(req.body);
 
     res.json(newRecipe);
   })
   // Read
   .get(async (req, res) => {
-    let allRecipes = await Recipes.find({});
+    let allRecipes = await Recipe.find({});
 
     res.json(allRecipes);
   });
@@ -22,17 +23,20 @@ router
 router
   .route("/:id")
   .put(async (req, res) => {
-    let updatedRecipe = await Recipes.findByIdAndUpdate(
+    let updatedRecipe = await Recipe.findByIdAndUpdate(
       req.params.id,
       req.body,
       { new: true }, 
     );
 
+    if (!updatedRecipe) return res.status(404).json({ error: "Recipe Not Found" });
+
     res.json(updatedRecipe);
   })
+
    // Delete
   .delete(async (req, res) => {
-    let deletedRecipe = await Recipes.findByIdAndDelete(req.params.id);
+    let deletedRecipe = await Recipe.findByIdAndDelete(req.params.id);
 
     if (!deletedRecipe) return res.status(404).json({ error: "Recipe Not Found" });
 
@@ -41,7 +45,7 @@ router
 
   // Show One
   .get(async (req, res) => {
-    let recipe = await Recipes.findById(req.params.id);
+    let recipe = await Recipe.findById(req.params.id);
 
     if (!recipe) return res.status(404).json({ error: "Recipe Not Found" });
 

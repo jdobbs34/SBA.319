@@ -2,8 +2,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import { logReq, globalErr } from "./middleware/middlewares.js";
-import connectDB from "./db/conn.js";
-import recipeRoutes from "./routes/recipeRoutes.js"
+import connectDB from "./db/conn.js"  
+import recipeRoutes from "./routes/breakfastRoutes.js"
 
 // Setups
 dotenv.config();
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(logReq);
 
 // Route
-app.use("/api/recipe", recipe);
+app.use("/api/recipe", recipeRoutes);
 
 // Global Err
 app.use(globalErr);
@@ -25,4 +25,3 @@ app.use(globalErr);
 app.listen(PORT, () => {
   console.log(`Server Listening on PORT: ${PORT}`);
 });
-

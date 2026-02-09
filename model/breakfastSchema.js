@@ -45,4 +45,4 @@ recipeSchema.index({ name: 1 });
 recipeSchema.index({ category: 1 });
 
 // Create the model
-export default mongoose.model("Recipes", recipeSchema);
+export default mongoose.model("Recipe", recipeSchema);
