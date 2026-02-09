@@ -17,3 +17,7 @@ app.use(logReq);
 // Global Err
 
 // Listener
+app.listen(PORT, () => {
+  console.log(`Server Listening on PORT: ${PORT}`);
+});
+
