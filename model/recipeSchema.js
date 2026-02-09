@@ -40,4 +40,9 @@ const recipeSchema = new mongoose.Schema(
   },
 );
 
+// Indexes
+recipeSchema.index({ name: 1 });
+recipeSchema.index({ category: 1 });
 
+// Create the model
+export default mongoose.model("Recipes", recipeSchema);
