@@ -3,7 +3,8 @@ import express from "express";
 import dotenv from "dotenv";
 import { logReq, globalErr } from "./middleware/middlewares.js";
 import connectDB from "./db/conn.js"  
-import recipeRoutes from "./routes/breakfastRoutes.js"
+import recipeRoutes from "./routes/recipeRoutes.js"
+import reviewRoutes from "./routes/reviewRoutes.js"
 
 // Setups
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(logReq);
 
 // Route
 app.use("/api/recipe", recipeRoutes);
+app.use("/api/review", reviewRoutes);
 
 // Global Err
 app.use(globalErr);

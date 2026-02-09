@@ -11,7 +11,7 @@ const recipeSchema = new mongoose.Schema(
     category: {
       type: String,
       required: [true, "Category is required"],
-      enum: ["Breakfast", "Lunch", "Dinner"],
+      enum: ["Dinner"],
       message: "Submitted an incorrect value for category",
     },
     ingredients: {
@@ -46,3 +46,6 @@ recipeSchema.index({ category: 1 });
 
 // Create the model
 export default mongoose.model("Recipe", recipeSchema);
+
+
+

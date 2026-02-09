@@ -1,0 +1,38 @@
+import mongoose from "mongoose";
+
+const reviewSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      unique: true,
+      message: "Missing Name value",
+    },
+    category: {
+      type: String,
+      required: [true, "Category is required"],
+      enum: ["Breakfast", "Lunch", "Dinner"],
+      message: "Submitted an incorrect value for category",
+    },
+    comment: {
+      type: [String],
+      required: [true, "Comment is required"],
+      message: "At least one comment is required",
+    },
+    author: {
+      type: String,
+      required: [true, "Name of author required"],
+      minlength: [2, "Need at least 2 characters"],
+    },
+  },
+  {
+    timestamps: true,
+  },
+);
+
+// Indexes
+reviewSchema.index({ name: 1 });
+reviewSchema.index({ category: 1 });
+
+// Create the model
+export default mongoose.model("Review", reviewSchema);
