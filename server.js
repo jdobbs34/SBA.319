@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { logReq, globalErr } from "./middleware/middlewares.js";
 import connectDB from "./db/conn.js";
 
+
 // Setups
 dotenv.config();
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(logReq);
 
 // Route
+app.use("/api/recipe", recipe);
 
 // Global Err
 app.use(globalErr);
