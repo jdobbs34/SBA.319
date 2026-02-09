@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import User from "../models/userSchema.js";
 import Recipe from "../models/recipeSchema.js";
+import Review from "../models/reviewSchema.js";
 import data from "./data.js";
 
 dotenv.config();
@@ -13,11 +15,11 @@ async function seedDatabase() {
     await mongoose.connect(connectionStr);
     console.log("✅ Connected to DB");
 
-    await Recipe.deleteMany({});
+    await .deleteMany({});
     console.log('✅ Deleted Previous')
 
     await Recipe.create(data);
-    console.log('✅ Added New Chars')
+    console.log('✅ Added New ')
 
     console.log('🎉Successfully Seeded!')
     process.exit(1);
@@ -37,7 +39,27 @@ async function seedDatabase() {
     console.log('✅ Deleted Previous')
 
     await Review.create(data);
-    console.log('✅ Added New Chars')
+    console.log('✅ Added New ')
+
+    console.log('🎉Successfully Seeded!')
+    process.exit(1);
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
+}
+
+async function seedDatabase() {
+  console.log("🚀 Starting Seed");
+  try {
+    await mongoose.connect(connectionStr);
+    console.log("✅ Connected to DB");
+
+    await User.deleteMany({});
+    console.log('✅ Deleted Previous')
+
+    await User.create(data);
+    console.log('✅ Added ')
 
     console.log('🎉Successfully Seeded!')
     process.exit(1);

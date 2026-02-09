@@ -5,6 +5,7 @@ import { logReq, globalErr } from "./middleware/middlewares.js";
 import connectDB from "./db/conn.js"  
 import recipeRoutes from "./routes/recipeRoutes.js"
 import reviewRoutes from "./routes/reviewRoutes.js"
+import userRoutes from "./routes/userRoutes.js"
 
 // Setups
 dotenv.config();
@@ -19,6 +20,7 @@ app.use(logReq);
 // Route
 app.use("/api/recipe", recipeRoutes);
 app.use("/api/review", reviewRoutes);
+app.use("/api/user", userRoutes);
 
 // Global Err
 app.use(globalErr);
