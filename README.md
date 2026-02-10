@@ -12,4 +12,4 @@ This database is for people who want to create an account to share their recipes
 Each user has the ability in all three databases to create, update, and delete their account and info they share.
 
 ## Issue with server.js
-If I commnt out these routes and import links above my Mongoose will connect.
+If I comment out the routes and import links above my Mongoose will connect besides that it does not.
