@@ -38,7 +38,7 @@ router
     let updatedReview = await Review.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true },
+      { new: true, runValidators: true },
     );
 
     if (!updatedReview)

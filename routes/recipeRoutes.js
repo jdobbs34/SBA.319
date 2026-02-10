@@ -38,7 +38,7 @@ router
     let updatedRecipe = await Recipe.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true },
+      { new: true, runValidators: true },
     );
 
     if (!updatedRecipe)
