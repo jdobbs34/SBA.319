@@ -3,7 +3,9 @@ import dotenv from "dotenv";
 import User from "../models/userSchema.js";
 import Recipe from "../models/recipeSchema.js";
 import Review from "../models/reviewSchema.js";
-import data from "./data.js";
+import data from "./dataUsers.js";
+import data from "./dataRecipes.js";
+import data from './dataReviews';
 
 dotenv.config();
 
