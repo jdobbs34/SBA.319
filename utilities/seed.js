@@ -5,7 +5,7 @@ import Recipe from "../models/recipeSchema.js";
 import Review from "../models/reviewSchema.js";
 import data from "./dataUsers.js";
 import data from "./dataRecipes.js";
-import data from './dataReviews';
+import data from './dataReviews.js';
 
 dotenv.config();
 
