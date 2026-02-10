@@ -1,8 +1,20 @@
 import express from "express";
 import User from "../models/userSchema.js";
-
+import data from "../utilities/dataUsers.js";
 
 const router = express.Router();
+
+router.get("/seed", async (req, res) => {
+  try {
+    await User.deleteMany({});
+    await User.create(data);
+
+    res.send("Seeded Database");
+  } catch (error) {
+    console.error(error.message);
+    res.send("Seed failed");
+  }
+});
 
 // Create
 router
@@ -23,18 +35,16 @@ router
 router
   .route("/:id")
   .put(async (req, res) => {
-    let updatedUser = await User.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }, 
-    );
+    let updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
 
     if (!updatedUser) return res.status(404).json({ error: "User Not Found" });
 
     res.json(updatedUser);
   })
 
-   // Delete
+  // Delete
   .delete(async (req, res) => {
     let deletedUser = await User.findByIdAndDelete(req.params.id);
 

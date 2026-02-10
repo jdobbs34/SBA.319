@@ -1,8 +1,20 @@
 import express from "express";
 import Review from "../models/reviewSchema.js";
-
+import data from "../utilities/dataReviews.js";
 
 const router = express.Router();
+
+router.get("/seed", async (req, res) => {
+  try {
+    await Review.deleteMany({});
+    await Review.create(data);
+
+    res.send("Seeded Database");
+  } catch (error) {
+    console.error(error.message);
+    res.send("Seed failed");
+  }
+});
 
 // Create
 router
@@ -26,19 +38,21 @@ router
     let updatedReview = await Review.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true }, 
+      { new: true },
     );
 
-    if (!updatedReview) return res.status(404).json({ error: "Review Not Found" });
+    if (!updatedReview)
+      return res.status(404).json({ error: "Review Not Found" });
 
     res.json(updatedReview);
   })
 
-   // Delete
+  // Delete
   .delete(async (req, res) => {
     let deletedReview = await Review.findByIdAndDelete(req.params.id);
 
-    if (!deletedReview) return res.status(404).json({ error: "Review Not Found" });
+    if (!deletedReview)
+      return res.status(404).json({ error: "Review Not Found" });
 
     res.json(deletedReview);
   })

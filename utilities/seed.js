@@ -15,11 +15,11 @@ async function seedDatabase() {
     await mongoose.connect(connectionStr);
     console.log("✅ Connected to DB");
 
-    await .deleteMany({});
+    await Recipe.deleteMany({});
     console.log('✅ Deleted Previous')
 
     await Recipe.create(data);
-    console.log('✅ Added New ')
+    console.log('✅ Added New Recipe')
 
     console.log('🎉Successfully Seeded!')
     process.exit(1);
@@ -39,7 +39,7 @@ async function seedDatabase() {
     console.log('✅ Deleted Previous')
 
     await Review.create(data);
-    console.log('✅ Added New ')
+    console.log('✅ Added New Review')
 
     console.log('🎉Successfully Seeded!')
     process.exit(1);
@@ -59,7 +59,7 @@ async function seedDatabase() {
     console.log('✅ Deleted Previous')
 
     await User.create(data);
-    console.log('✅ Added ')
+    console.log('✅ Added New User')
 
     console.log('🎉Successfully Seeded!')
     process.exit(1);

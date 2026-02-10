@@ -1,8 +1,20 @@
 import express from "express";
 import Recipe from "../models/recipeSchema.js";
-
+import data from "../utilities/dataRecipes.js";
 
 const router = express.Router();
+
+router.get("/seed", async (req, res) => {
+  try {
+    await Recipe.deleteMany({});
+    await Recipe.create(data);
+
+    res.send("Seeded Database");
+  } catch (error) {
+    console.error(error.message);
+    res.send("Seed failed");
+  }
+});
 
 // Create
 router
@@ -26,19 +38,21 @@ router
     let updatedRecipe = await Recipe.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true }, 
+      { new: true },
     );
 
-    if (!updatedRecipe) return res.status(404).json({ error: "Recipe Not Found" });
+    if (!updatedRecipe)
+      return res.status(404).json({ error: "Recipe Not Found" });
 
     res.json(updatedRecipe);
   })
 
-   // Delete
+  // Delete
   .delete(async (req, res) => {
     let deletedRecipe = await Recipe.findByIdAndDelete(req.params.id);
 
-    if (!deletedRecipe) return res.status(404).json({ error: "Recipe Not Found" });
+    if (!deletedRecipe)
+      return res.status(404).json({ error: "Recipe Not Found" });
 
     res.json(deletedRecipe);
   })

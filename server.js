@@ -17,8 +17,8 @@ connectDB();
 app.use(express.json());
 app.use(logReq);
 
-// Route
-app.use("/api/recipe", recipeRoutes);
+// Route   // If I commnt out these routes and import links above my Mongoose will connect
+app.use("/api/recipe", recipeRoutes); 
 app.use("/api/review", reviewRoutes);
 app.use("/api/user", userRoutes);
 

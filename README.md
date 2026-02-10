@@ -10,3 +10,6 @@ This database is for people who want to create an account to share their recipes
 - And a database where you can rate other people recipes and give feedback.
 
 Each user has the ability in all three databases to create, update, and delete their account and info they share.
+
+## Issue with server.js
+If I commnt out these routes and import links above my Mongoose will connect.
