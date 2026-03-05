@@ -29,4 +29,4 @@ const userSchema = new mongoose.Schema(
 userSchema.index({ name: 1 });
 
 // Create the model
-export default mongoose.model("Review", userSchema);
+export default mongoose.model("Users", userSchema);

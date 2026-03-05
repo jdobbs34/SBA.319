@@ -26,9 +26,9 @@ router
   })
   // Read
   .get(async (req, res) => {
-    let allRecipes = await Recipe.find({});
+    let allRecipe = await Recipe.find({});
 
-    res.json(allRecipes);
+    res.json(allRecipe);
   });
 
 // Update

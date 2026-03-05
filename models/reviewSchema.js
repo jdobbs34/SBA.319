@@ -34,4 +34,4 @@ reviewSchema.index({ name: 1 });
 reviewSchema.index({ category: 1 });
 
 // Create the model
-export default mongoose.model("Review", reviewSchema);
+export default mongoose.model("Reviews", reviewSchema);

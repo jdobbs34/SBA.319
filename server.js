@@ -3,9 +3,9 @@ import express from "express";
 import dotenv from "dotenv";
 import { logReq, globalErr } from "./middleware/middlewares.js";
 import connectDB from "./db/conn.js"  
-// import recipeRoutes from "./routes/recipeRoutes.js"
-// import reviewRoutes from "./routes/reviewRoutes.js"
-// import userRoutes from "./routes/userRoutes.js"
+import recipeRoutes from "./routes/recipeRoutes.js"
+import reviewRoutes from "./routes/reviewRoutes.js"
+import userRoutes from "./routes/userRoutes.js"
 
 // Setups
 dotenv.config();
@@ -18,9 +18,9 @@ app.use(express.json());
 app.use(logReq);
 
 // Route   // If I comment out these routes and import links above my Mongoose will connect besides that it does not.
-// app.use("/api/user", userRoutes);
-// app.use("/api/recipe", recipeRoutes); 
-// app.use("/api/review", reviewRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/recipe", recipeRoutes); 
+app.use("/api/review", reviewRoutes);
 
 // Global Err
 app.use(globalErr);
